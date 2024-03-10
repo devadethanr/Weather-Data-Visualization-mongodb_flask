@@ -1,7 +1,9 @@
 import os
 from pymongo import MongoClient
 from dotenv import load_dotenv
-import os
+import inspect
+from pathlib import Path
+import sys
 
 load_dotenv()
 api_key = os.environ.get('OPENWEATHER_API_KEY')
