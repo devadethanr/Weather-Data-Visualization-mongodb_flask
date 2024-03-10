@@ -24,7 +24,6 @@ def fetch_weather_data(city, country):
         'appid': api_key,
         'units': 'metric'
     }
-    
     try:
         response = requests.get(base_url, params=params)
         response.raise_for_status()
@@ -36,7 +35,6 @@ def fetch_weather_data(city, country):
             'wind_speed': data['wind']['speed'],
             'weather_description': data['weather'][0]['description']
         }
-        
         return weather_data
     
     except requests.exceptions.RequestException as e:

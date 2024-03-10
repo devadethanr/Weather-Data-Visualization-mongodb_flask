@@ -25,7 +25,6 @@ def create_user(username, email, password, location):
         'password': password,
         'location': location
     }
-    
     result = db.users.insert_one(user)
     return result.inserted_id
 
