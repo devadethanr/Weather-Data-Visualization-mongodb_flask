@@ -1,6 +1,6 @@
 import os
-import requests
 from datetime import datetime
+import requests
 from pymongo import MongoClient
 from dotenv import load_dotenv
 
