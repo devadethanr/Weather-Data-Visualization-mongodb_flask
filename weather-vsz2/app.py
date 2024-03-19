@@ -3,6 +3,8 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from dotenv import load_dotenv
 from utils.db import get_user, create_user, update_location
 from utils.user import authenticate_user, register_user
+from utils.weather import fetch_weather_data 
+
 
 load_dotenv()
 
@@ -63,3 +65,13 @@ def register():
         return render_template('register.html', error='Registration failed')
 
     return render_template('register.html')
+
+@app.route('/weather_chart')
+def weather_chart():
+    """ 
+    render the home page after login, which contains the weather data
+    """
+    city = "London"
+    country = "UK"
+    weather_data = fetch_weather_data(city, country)  # Fetches current weather data for London
+    return render_template('weather_chart.html', weather_data=weather_data)

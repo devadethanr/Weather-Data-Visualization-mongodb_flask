@@ -28,7 +28,6 @@ def fetch_weather_data(city, country):
         response = requests.get(base_url, params=params)
         response.raise_for_status()
         data = response.json()
-        
         weather_data = {
             'temperature': data['main']['temp'],
             'humidity': data['main']['humidity'],
@@ -36,7 +35,6 @@ def fetch_weather_data(city, country):
             'weather_description': data['weather'][0]['description']
         }
         return weather_data
-    
     except requests.exceptions.RequestException as e:
         print(f"Error fetching weather data: {e}")
         return None
@@ -46,13 +44,12 @@ def update_weather_data(user_id, location):
     Fetches weather data for the given location and updates the weather_data collection in MongoDB.
     """
     weather_data = fetch_weather_data(location['city'], location['country'])
-    
     if weather_data:
         data = {
             'user_id': user_id,
             'timestamp': datetime.utcnow(),
             'data': weather_data
         }
-        
         db.weather_data.insert_one(data)
         print(f"Weather data updated for user {user_id}")
+        
