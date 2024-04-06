@@ -1,0 +1,21 @@
+#footer {
+    text-decoration: none;
+    width: fit-content;
+}
+
+@media screen and (max-width: 820px) {
+    #footer {
+        display: block;
+        margin: auto;
+        padding-bottom: 0.25rem;
+    }
+}
+
+@media screen and (min-width: 821px) {
+    #footer {
+        position: absolute;
+        bottom: 0.1%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

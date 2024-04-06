@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="/static/css/weather.css" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<title>{{locationName}} is {{currentTemp}}° at {{localTime}}</title>
+<link
+  rel="icon"
+  href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>{{currentCondition}}</text></svg>"
+/>
+{% include 'search.html' %}
+<div class="weatherCard">
+  <div class="container">
+    <div class="currentContainer">
+      <div class="currentStats">
+        <div class="currentCondition">{{currentCondition}}</div>
+        <h1>{{currentTemp}}°</h1>
+      </div>
+      <div class="stats">
+        Location: <b>{{locationName}}</b> <br />
+        Region: <b>{{locationRegion}}</b> <br />
+        Country: <b>{{locationCountry}}</b><br />
+        Local Time: <b>{{localTime}}</b><br />
+      </div>
+    </div>
+    <div class="daysContainer">
+      {% for data in data %}
+      <div class="day">
+        <div class="date">{{data[4]}}</div>
+        <div class="dayCondition">{{data[0]}}</div>
+        <div class="dayAvgTemp">{{data[1]}}°</div>
+        <div class="dayTemps">
+          <div class="dayMinTemp">{{data[3]}}°</div>
+          <div class="dayMaxTemp">{{data[2]}}°</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{%include "footer.html"%}
